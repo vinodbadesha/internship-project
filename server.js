@@ -12,6 +12,7 @@ app.use(express.json())
 const dbPath = path.join(__dirname, "tasks.db")
 
 let db = null
+const PORT = process.env.PORT || 3000
 
 const initiateDbAndStartServer = async () => {
     try{
@@ -19,8 +20,8 @@ const initiateDbAndStartServer = async () => {
             filename: dbPath,
             driver: sqlite3.Database
         })
-        app.listen(4000, () => {
-            console.log("Server started successfully at port: 4000")
+        app.listen(PORT, () => {
+            console.log(`Server started successfully at port: ${PORT}`)
         })
     }
     catch(error){
